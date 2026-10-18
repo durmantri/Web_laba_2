@@ -2,26 +2,55 @@
 <html lang="uk">
   <head>
     <meta charset="utf-8" />
-    <title>Резюме</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Резюме - Junior Network Engineer</title>
+
+    <!--  External спосіб підключення  -->
+    <link rel="stylesheet" href="styles.css" />
+
+    <!--  Internal спосіб підключення CSS -->
+    <style>
+      .status-badge {
+        display: block;
+        width: fit-content;
+        margin: 8px auto 0 auto;
+        background-color: #e6fae1;
+        color: var(--accent, #020203);
+        padding: 4px 12px;
+        border-radius: 12px;
+        font-weight: 600;
+        font-size: 30px;
+        text-align: center;
+      }
+    </style>
   </head>
   <body>
-    <header>
-      <h1>Добош Богдан Романович</h1>
-
-      <p><strong>Бажана посада:</strong> Junior network engineer</p>
+    <!-- Селектор ID -->
+    <header id="main-header">
+      <h1 class="status-badge">Богдан Добош Романович</h1>
+      <p><strong>Бажана посада:</strong> Junior Network Engineer</p>
     </header>
-    <main>
-      <section>
+
+    <main class="layout-container">
+      <!-- Селектор класу -->
+      <section class="card">
+        <h2>Контактні дані</h2>
         <p>
-          <strong>Контактні дані:</strong><br />
-          Email: dobosh2026@gmail.com<br />
-          Телефон: +380 (50) 123-45-67<br />
-          Місто: Львів, Україна<br />
-          GitHub:
-          <a href="https://github.com/durmantri">github.com/durmantri </a>
+          <strong>Email:</strong> dobosh2026@gmail.com<br />
+          <strong>Телефон:</strong> +380 (50) 123-45-67<br />
+          <strong>Місто:</strong> Львів, Україна<br />
+          <!-- Селектор за атрибутом -->
+          <strong>GitHub:</strong>
+          <a
+            href="https://github.com/durmantri/Web_laba_2"
+            target="_blank"
+            class="btn"
+            >github.com/profile</a
+          >
         </p>
       </section>
-      <section>
+
+      <section class="card">
         <h2>Про мене</h2>
         <p>
           Мотивований фахівець із базовими знаннями конфігурації комп'ютерних
@@ -30,17 +59,17 @@
           прагну розвиватися у сфері адміністрування мереж.
         </p>
       </section>
-      <section>
-        <h2>Досвід роботи</h2>
 
-        <h3>Стажер junior network engineer</h3>
+      <section class="card">
+        <h2>Досвід роботи</h2>
+        <h3>Стажер Junior Network Engineer</h3>
         <p>
           <em>ТОВ "Технології майбутнього" | Червень 2025 – Серпень 2025</em>
         </p>
         <ul>
           <li>
             Налаштування корпоративної мережі, подальша сегментація шляхом
-            створення VLAN
+            створення VLAN.
           </li>
           <li>
             Конфігурація базових параметрів мережевого обладнання та тестування
@@ -52,31 +81,31 @@
           </li>
         </ul>
       </section>
-      <section>
-        <h2>Освіта</h2>
 
-        <h3>Національний університет Львівська політехніка</h3>
+      <section class="card">
+        <h2>Освіта</h2>
+        <h3>Національний університет «Львівська політехніка»</h3>
         <p>
-          <em
-            >Бакалавр освітньої програми F5"Кібербезпека" | Вересень 2020 –
-            Червень 2024
-          </em>
+          <em>Бакалавр за спеціальністю «Кібербезпека» | 2025 – 2029</em>
         </p>
         <p>
           Поглиблене вивчення алгоритмів, структур даних, реляційних баз даних,
           об'єктно-орієнтованого програмування, симуляції та конфігурації
-          комп'ютерних мереж,.
+          комп'ютерних мереж.
         </p>
       </section>
-      <section>
+
+      <section class="card">
         <h2>Навички</h2>
-        <ul>
+        <ul class="skills-list">
           <li>
-            <strong>Мережеві технології:</strong> TCP/IP, Cisco Packet tracer,
+            <strong>Мережеві технології:</strong> TCP/IP, Cisco Packet Tracer,
             VLAN, статична маршрутизація
           </li>
           <li><strong>Мови програмування:</strong> Python, HTML, CSS</li>
-          <li><strong>Технології та фреймворки:</strong>Git, GitHub, VScode</li>
+          <li>
+            <strong>Технології та інструменти:</strong> Git, GitHub, VS Code
+          </li>
           <li><strong>Операційні системи:</strong> Windows, Linux</li>
           <li>
             <strong>Мови:</strong> Українська (рідна), Англійська (Intermediate)
@@ -84,8 +113,17 @@
         </ul>
       </section>
     </main>
-    <footer>
-      <p>Резюме оновлено 0.4.10.2026</p>
+
+    <!-- 3. Inline спосіб підключення -->
+    <footer
+      style="
+        font-size: 0.9rem;
+        color: #666;
+        text-align: center;
+        margin-top: 20px;
+      "
+    >
+      <p>Резюме оновлено: 04.10.2026</p>
     </footer>
   </body>
 </html>
