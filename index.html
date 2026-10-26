@@ -14,7 +14,7 @@
         display: block;
         width: fit-content;
         margin: 8px auto 0 auto;
-        background-color: #e6fae1;
+        background-color: var(--bg-color);
         color: var(--accent, #020203);
         padding: 4px 12px;
         border-radius: 12px;
@@ -29,6 +29,7 @@
     <header id="main-header">
       <h1 class="status-badge">Богдан Добош Романович</h1>
       <p><strong>Бажана посада:</strong> Junior Network Engineer</p>
+      <button id="theme-btn" class="theme-btn">🌙/☀️</button>
     </header>
 
     <main class="layout-container">
@@ -80,8 +81,35 @@
             за допомогою базових утиліт.
           </li>
         </ul>
-      </section>
 
+        <!-- Контейнер для коментарів-->
+        <h3>Коментарі роботодавців</h3>
+        <div id="comments-container"></div>
+      </section>
+      <script>
+        fetch("https://jsonplaceholder.typicode.com/posts/6/comments")
+          .then((response) => response.json())
+          //додаємо коменти в контейнер
+          .then((comments) => {
+            const container = document.getElementById("comments-container");
+            //переберає коменти та ствоює для кожного новий div
+            comments.forEach((comment) => {
+              const commentDiv = document.createElement("div");
+              commentDiv.className = "comment-card";
+
+              commentDiv.innerHTML = `
+                    <strong>${comment.name}</strong>
+                    <div class="comment-email">${comment.email}</div>
+                    <div class="comment-body">${comment.body}</div>
+                `;
+              //додає коменти до головного контейнера
+              container.appendChild(commentDiv);
+            });
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      </script>
       <section class="card">
         <h2>Освіта</h2>
         <h3>Національний університет «Львівська політехніка»</h3>
@@ -116,6 +144,7 @@
 
     <!-- 3. Inline спосіб підключення -->
     <footer
+      id="footer"
       style="
         font-size: 0.9rem;
         color: #666;
@@ -125,5 +154,72 @@
     >
       <p>Резюме оновлено: 04.10.2026</p>
     </footer>
+    <script>
+      //збір інфи про систему
+      const systemInfo = {
+        platform: navigator.platform,
+        deviceMemory: navigator.deviceMemory,
+        userAgent: navigator.userAgent,
+        language: navigator.language,
+        cookieEnabled: navigator.cookieEnabled,
+        savedAt: new Date().toLocaleString(),
+      };
+
+      //збереження і зчитування з localstorage
+      localStorage.setItem("userSystemInfo", JSON.stringify(systemInfo));
+      const storedData = localStorage.getItem("userSystemInfo");
+      const footerElement = document.getElementById("footer");
+
+      if (storedData && footerElement) {
+        const info = JSON.parse(storedData);
+
+        footerElement.innerHTML = `
+              <strong>Інформація про систему:</strong><br>
+              <span>ОС: ${info.platform}</span> | 
+              <span>Браузер: ${info.userAgent}</span> |
+              <span>Мова: ${info.language}</span> |
+              <span>Пам'ять пристрою: ${info.deviceMemory}</span> |
+              <span>cookie: ${info.cookieEnabled}</span>
+              `;
+      }
+    </script>
+    <script>
+      const themeToggleButton = document.getElementById("theme-btn");
+      const htmlElement = document.documentElement;
+
+      // Функція застосування теми
+      function setTheme(isDark) {
+        if (isDark) {
+          htmlElement.classList.add("dark");
+          if (themeToggleButton) themeToggleButton.innerText = "☀️";
+        } else {
+          htmlElement.classList.remove("dark");
+          if (themeToggleButton) themeToggleButton.innerText = "🌙";
+        }
+      }
+
+      const savedTheme = localStorage.getItem("userTheme");
+
+      if (savedTheme !== null) {
+        setTheme(savedTheme === "dark");
+      } else {
+        // Автоматичний вибір теми за часом
+        const currentHour = new Date().getHours();
+        const isDayTime = currentHour >= 7 && currentHour < 21;
+
+        setTheme(!isDayTime);
+      }
+
+      // вибір темик кнопокою
+      if (themeToggleButton) {
+        themeToggleButton.addEventListener("click", () => {
+          const isCurrentlyDark = htmlElement.classList.contains("dark");
+          const newThemeIsDark = !isCurrentlyDark;
+
+          setTheme(newThemeIsDark);
+          localStorage.setItem("userTheme", newThemeIsDark ? "dark" : "light");
+        });
+      }
+    </script>
   </body>
 </html>

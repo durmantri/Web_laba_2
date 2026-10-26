@@ -1,0 +1,174 @@
+/* 1. Змінні */
+:root {
+  --accent: #2d6a4f;
+  --accent-hover: #1b4332;
+  --bg-color: #f4f9f4;
+  --card-bg: #ffffff;
+  --text-color: #2b3a4a;
+  --border-color: #c7e5d0;
+}
+html.dark {
+  --accent: #10b981;
+  --accent-hover: #1b4332;
+  --bg-color: #0f172a;
+  --card-bg: #1e293b;
+  --text-color: #f1f5f9;
+  --border-color: #334155;
+}
+/* 2. Базові стилі тегів */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  padding: 20px;
+}
+
+/* Селектори тегів h2, h3 */
+h2 {
+  color: var(--accent);
+  margin-bottom: 12px;
+  border-bottom: 2px solid var(--bg-color);
+  padding-bottom: 4px;
+}
+
+h3 {
+  margin-top: 10px;
+  color: var(--text-color);
+}
+
+p {
+  margin-bottom: 8px;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+li {
+  margin-bottom: 6px;
+}
+
+/* Селектор за атрибутом*/
+a[target="_blank"] {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* Псевдоклас :hover  */
+a[target="_blank"]:hover {
+  color: rgb(4, 241, 4);
+  text-decoration: underline;
+}
+
+/* 3. Макет сторінки */
+/* Селектор ID header */
+#main-header {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  max-width: 900px;
+  background-color: var(--card-bg);
+  padding: 24px;
+  margin-bottom: 20px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  text-align: center;
+}
+
+/* Побудова макету на Flexbox */
+.layout-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* 4. Компоненти: .card .btn */
+.card {
+  background-color: var(--card-bg);
+  padding: 20px;
+  border: 1px solid var(--border-color);
+  border-left: 5px solid var(--accent);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+.theme-btn {
+  font-size: 30px;
+  color: var(--text-color);
+  font-weight: 600;
+  display: inline-block;
+  background-color: var(--bg-color);
+  border-radius: 5px;
+  border: 1px var(--border-color);
+  margin-left: auto;
+}
+/*стилі для коментарів*/
+.comment-card {
+  background: var(--bg-color);
+  padding: 16px;
+  margin-bottom: 12px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+.comment-email {
+  font-size: 13px;
+  color: #059669;
+  font-weight: 600;
+}
+.comment-body {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #475569;
+}
+
+/* Псевдоклас :hover для картки */
+.card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.2s ease-in-out;
+}
+.theme-btn:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.btn {
+  display: inline-block;
+  padding: 4px 8px;
+  background-color: var(--bg-color);
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+}
+
+.skills-list li {
+  list-style-type: circle;
+}
+
+/* 5. Медіазапити */
+@media (max-width: 600px) {
+  body {
+    padding: 10px;
+  }
+
+  #main-header {
+    padding: 16px;
+  }
+
+  .card {
+    padding: 14px;
+    border-left-width: 3px;
+  }
+
+  .skills-list {
+    padding-left: 15px;
+  }
+}
