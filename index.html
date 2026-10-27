@@ -4,11 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Резюме - Junior Network Engineer</title>
-
-    <!--  External спосіб підключення  -->
     <link rel="stylesheet" href="styles.css" />
-
-    <!--  Internal спосіб підключення CSS -->
     <style>
       .status-badge {
         display: block;
@@ -25,22 +21,19 @@
     </style>
   </head>
   <body>
-    <!-- Селектор ID -->
     <header id="main-header">
       <h1 class="status-badge">Богдан Добош Романович</h1>
       <p><strong>Бажана посада:</strong> Junior Network Engineer</p>
-      <button id="theme-btn" class="theme-btn">🌙/☀️</button>
+      <button id="theme-btn" class="theme-btn"></button>
     </header>
 
     <main class="layout-container">
-      <!-- Селектор класу -->
       <section class="card">
         <h2>Контактні дані</h2>
         <p>
           <strong>Email:</strong> dobosh2026@gmail.com<br />
           <strong>Телефон:</strong> +380 (50) 123-45-67<br />
           <strong>Місто:</strong> Львів, Україна<br />
-          <!-- Селектор за атрибутом -->
           <strong>GitHub:</strong>
           <a
             href="https://github.com/durmantri/Web_laba_2"
@@ -82,34 +75,10 @@
           </li>
         </ul>
 
-        <!-- Контейнер для коментарів-->
         <h3>Коментарі роботодавців</h3>
         <div id="comments-container"></div>
       </section>
-      <script>
-        fetch("https://jsonplaceholder.typicode.com/posts/6/comments")
-          .then((response) => response.json())
-          //додаємо коменти в контейнер
-          .then((comments) => {
-            const container = document.getElementById("comments-container");
-            //переберає коменти та ствоює для кожного новий div
-            comments.forEach((comment) => {
-              const commentDiv = document.createElement("div");
-              commentDiv.className = "comment-card";
 
-              commentDiv.innerHTML = `
-                    <strong>${comment.name}</strong>
-                    <div class="comment-email">${comment.email}</div>
-                    <div class="comment-body">${comment.body}</div>
-                `;
-              //додає коменти до головного контейнера
-              container.appendChild(commentDiv);
-            });
-          })
-          .catch((error) => {
-            console.error("Error:", error);
-          });
-      </script>
       <section class="card">
         <h2>Освіта</h2>
         <h3>Національний університет «Львівська політехніка»</h3>
@@ -142,7 +111,6 @@
       </section>
     </main>
 
-    <!-- 3. Inline спосіб підключення -->
     <footer
       id="footer"
       style="
@@ -151,75 +119,59 @@
         text-align: center;
         margin-top: 20px;
       "
-    >
-      <p>Резюме оновлено: 04.10.2026</p>
-    </footer>
-    <script>
-      //збір інфи про систему
-      const systemInfo = {
-        platform: navigator.platform,
-        deviceMemory: navigator.deviceMemory,
-        userAgent: navigator.userAgent,
-        language: navigator.language,
-        cookieEnabled: navigator.cookieEnabled,
-        savedAt: new Date().toLocaleString(),
-      };
+    ></footer>
 
-      //збереження і зчитування з localstorage
-      localStorage.setItem("userSystemInfo", JSON.stringify(systemInfo));
-      const storedData = localStorage.getItem("userSystemInfo");
-      const footerElement = document.getElementById("footer");
+    <div id="feedback-modal" class="modal-overlay hidden">
+      <div class="card modal-card">
+        <button id="close-modal" class="modal-close">&times;</button>
 
-      if (storedData && footerElement) {
-        const info = JSON.parse(storedData);
+        <h2>Зворотний зв'язок</h2>
+        <form
+          action="https://formspree.io/f/xdeeerdg"
+          method="POST"
+          class="modal-form"
+        >
+          <div class="form-group">
+            <label for="name">Ім’я</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              placeholder="Ваше ім'я"
+            />
+          </div>
 
-        footerElement.innerHTML = `
-              <strong>Інформація про систему:</strong><br>
-              <span>ОС: ${info.platform}</span> | 
-              <span>Браузер: ${info.userAgent}</span> |
-              <span>Мова: ${info.language}</span> |
-              <span>Пам'ять пристрою: ${info.deviceMemory}</span> |
-              <span>cookie: ${info.cookieEnabled}</span>
-              `;
-      }
-    </script>
-    <script>
-      const themeToggleButton = document.getElementById("theme-btn");
-      const htmlElement = document.documentElement;
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              placeholder="example@gmail.com"
+            />
+          </div>
 
-      // Функція застосування теми
-      function setTheme(isDark) {
-        if (isDark) {
-          htmlElement.classList.add("dark");
-          if (themeToggleButton) themeToggleButton.innerText = "☀️";
-        } else {
-          htmlElement.classList.remove("dark");
-          if (themeToggleButton) themeToggleButton.innerText = "🌙";
-        }
-      }
+          <div class="form-group">
+            <label for="phone">Номер телефону</label>
+            <input type="tel" id="phone" name="phone" placeholder="+380..." />
+          </div>
 
-      const savedTheme = localStorage.getItem("userTheme");
+          <div class="form-group">
+            <label for="message">Повідомлення</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="3"
+              placeholder="Ваше повідомлення..."
+            ></textarea>
+          </div>
 
-      if (savedTheme !== null) {
-        setTheme(savedTheme === "dark");
-      } else {
-        // Автоматичний вибір теми за часом
-        const currentHour = new Date().getHours();
-        const isDayTime = currentHour >= 7 && currentHour < 21;
-
-        setTheme(!isDayTime);
-      }
-
-      // вибір темик кнопокою
-      if (themeToggleButton) {
-        themeToggleButton.addEventListener("click", () => {
-          const isCurrentlyDark = htmlElement.classList.contains("dark");
-          const newThemeIsDark = !isCurrentlyDark;
-
-          setTheme(newThemeIsDark);
-          localStorage.setItem("userTheme", newThemeIsDark ? "dark" : "light");
-        });
-      }
-    </script>
+          <button type="submit" class="submit-btn">Надіслати</button>
+        </form>
+      </div>
+    </div>
+    <script src="script.js"></script>
   </body>
 </html>
