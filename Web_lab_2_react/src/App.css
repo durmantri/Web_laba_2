@@ -167,7 +167,7 @@
 
   &::before,
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     top: -4.5px;
     border: 5px solid transparent;
@@ -180,5 +180,11 @@
   &::after {
     right: 0;
     border-right-color: var(--border);
+  }
+}
+@media (max-width: 600px) {
+  .card {
+    padding: 12px;
+    font-size: 14px;
   }
 }

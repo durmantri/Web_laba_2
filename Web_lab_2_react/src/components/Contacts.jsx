@@ -1,38 +1,48 @@
+import { componentStyles } from "./componentStyles";
 function Contacts() {
   return (
-    <section className="bg-white p-6 rounded-2xl shadow-sm border border-emerald-100 transition-all duration-300 hover:shadow-md hover:border-emerald-300">
-      <h2 className="text-xl font-bold text-emerald-900 mb-4 pb-2 border-b border-emerald-50 flex items-center gap-2">
-        Контакти
-      </h2>
+    <section className={componentStyles.section}>
+      <h2 className={componentStyles.h2}>Контакти</h2>
 
-      <div className="space-y-3 text-slate-700 text-xl">
-        <div className="flex items-center gap-3 p-2.5 rounded-xl bg-emerald-50/40 ">
-          <span className="text-emerald-700 font-semibold min-w-[80px]">
-            Email:
-          </span>
-          <a className="text-emerald-800  font-medium">dobosh2026@gmail.com</a>
+      <div className="space-y-3 text-slate-700 dark:text-slate-300 text-lg">
+        {/* Email */}
+        <div className={componentStyles.contacts_div}>
+          <span className={componentStyles.contacts_span}>Email:</span>
+          <a
+            href="mailto:dobosh2026@gmail.com"
+            className="text-emerald-700 dark:text-emerald-400 hover:text-emerald-900 dark:hover:text-emerald-300 font-medium hover:underline"
+          >
+            dobosh2026@gmail.com
+          </a>
         </div>
-        <div className="flex items-center gap-3 p-2.5 rounded-xl bg-emerald-50/40 ">
-          <span className="text-emerald-700 font-semibold min-w-[80px]">
-            Телефон:
-          </span>
-          <a className="text-slate-700 font-medium">+380 (50) 123-45-67</a>
+
+        {/* Телефон */}
+        <div className={componentStyles.contacts_div}>
+          <span className={componentStyles.contacts_span}>Телефон:</span>
+          <a
+            href="tel:+380501234567"
+            className="text-slate-700 dark:text-slate-200 font-medium"
+          >
+            +380 (50) 123-45-67
+          </a>
         </div>
-        <div className="flex items-center gap-3 p-2.5 rounded-xl bg-emerald-50/40 ">
-          <span className="text-emerald-700 font-semibold min-w-[80px]">
-            Місто:
+
+        {/* Місто */}
+        <div className={componentStyles.contacts_div}>
+          <span className={componentStyles.contacts_span}>Місто:</span>
+          <span className="text-slate-700 dark:text-slate-200 font-medium">
+            Львів, Україна
           </span>
-          <span className="text-slate-700 font-medium">Львів, Україна</span>
         </div>
-        <div className="flex items-center gap-3 p-2.5 rounded-xl bg-emerald-50/40 ">
-          <span className="text-emerald-700 font-semibold min-w-[80px]">
-            GitHub:
-          </span>
+
+        {/* GitHub */}
+        <div className={componentStyles.contacts_div}>
+          <span className={componentStyles.contacts_span}>GitHub:</span>
           <a
             href="https://github.com/durmantri"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-emerald-700 hover:text-emerald-900 font-medium hover:underline"
+            className="text-emerald-700 dark:text-emerald-400 hover:text-emerald-900 dark:hover:text-emerald-300 font-medium hover:underline"
           >
             github.com/durmantri
           </a>
@@ -41,5 +51,4 @@ function Contacts() {
     </section>
   );
 }
-
 export default Contacts;

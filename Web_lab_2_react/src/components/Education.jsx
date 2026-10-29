@@ -1,16 +1,15 @@
+import { componentStyles } from "./componentStyles";
 function Education() {
   return (
-    <section className="bg-white p-6 rounded-2xl shadow-sm border border-emerald-100 transition-all duration-300 hover:shadow-md hover:border-emerald-300">
-      <h2 className="text-xl font-bold text-emerald-900 mb-4 pb-2 border-b border-emerald-50">
-        Освіта
-      </h2>
-      <h3 className="font-semibold text-slate-800 text-lg">
+    <section className={componentStyles.section}>
+      <h2 className={componentStyles.h2}>Освіта</h2>
+      <h3 className={componentStyles.h3}>
         Національний університет «Львівська політехніка»
       </h3>
-      <p className="text-xl text-emerald-700  italic mb-3">
+      <p className="text-xl text-emerald-700 dark:text-emerald-400 italic mb-3">
         Бакалавр — Кібербезпека | 2022 – 2026
       </p>
-      <p className="text-slate-600 text-lg font-medium">
+      <p className={componentStyles.p}>
         Поглиблене вивчення алгоритмів, структур даних, реляційних баз даних та
         симуляції комп'ютерних мереж.
       </p>
